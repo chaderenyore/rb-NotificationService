@@ -11,7 +11,7 @@ RUN curl -sSLo /usr/local/bin/dumb-init \
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 ARG NPM_TOKEN
-WORKDIR /auth
+WORKDIR /notifications
 COPY package*.json /auth/
 RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc && \
    npm ci --only=production && \
@@ -22,9 +22,9 @@ RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc && \
 
 FROM node:14.21.1-bullseye-slim
 ENV NODE_ENV production
-WORKDIR /auth
+WORKDIR /notiofications
 COPY --from=builder /usr/local/bin/dumb-init /usr/local/bin/dumb-init
 USER node
 COPY --chown=node:node --from=builder /user/node_modules /user/src/app/node_modules
-COPY --chown=node:node . /user
+COPY --chown=node:node . /notification
 CMD ["dumb_init", "node","--optimize_for_size", "--max_old_space_size=480", "--gc_interval=100",  "server.js"]
