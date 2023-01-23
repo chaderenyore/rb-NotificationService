@@ -2,8 +2,15 @@ const mongoose = require("mongoose");
 const app = require("./src");
 const KEYS = require("./src/_config/keys");
 const logger  = require('./logger.conf');
-const WelcomeMailConsumer = require('./src/_queue/consumers/welcomMail.consumer');
-WelcomeMailConsumer.consume("Welcome Mail")
+const WelcomeMailConsumer = require('./src/_queue/consumers/welcomeMail.consumer');
+const PasswordResetConsumer = require('./src/_queue/consumers/passwordResetMail.consumers');
+const AccountVerificationMailConsumer = require('./src/_queue/consumers/accountVerificationmail.consumers');
+
+WelcomeMailConsumer.consume("Welcome Mail");
+PasswordResetConsumer.consume("Password Reset Mail");
+AccountVerificationMailConsumer.consume("Account Verification Mail");
+
+
 
 mongoose
   .connect(KEYS.mongoURI, {

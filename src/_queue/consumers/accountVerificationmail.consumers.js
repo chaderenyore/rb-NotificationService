@@ -1,10 +1,9 @@
-// const { QUEUES } = require('../constants/constants');
 const { Connnection } = require('../index');
 const  KEYS  = require('../../_config/keys')
 
-const WelcomeMailConsumer = new Connnection(KEYS.AMQP_URI, KEYS.MAIL_QUEUE,
+const AccountVerificationMailConsumer = new Connnection(KEYS.AMQP_URI, KEYS.ACCOUNT_VERIFICATION_MAIL_QUEUE,
   async (msg) => {
-    const channel = birthdayConsumer.getChannel();
+    const channel = AccountVerificationMailConsumer.getChannel();
     if (msg !== null) {
       const message = msg.content.toString();
       console.info(` [x] Consumed : ${message}`);
@@ -14,7 +13,7 @@ const WelcomeMailConsumer = new Connnection(KEYS.AMQP_URI, KEYS.MAIL_QUEUE,
       } = JSON.parse(message);
 
       try {
-        // TODO:::   send notification here
+    //    sedn account verifcation mail
         return channel.ack(msg);
       } catch (error) {
         console.error(`Error while sending email: ${error}`);
@@ -25,4 +24,4 @@ const WelcomeMailConsumer = new Connnection(KEYS.AMQP_URI, KEYS.MAIL_QUEUE,
     return null;
   });
 
-  module.exports = WelcomeMailConsumer;
+  module.exports = AccountVerificationMailConsumer;
