@@ -8,7 +8,7 @@ module.exports = () => {
   
   const router = Router();
 
-//   router.use("/user", UserMail);
+  router.use("/user", UserMail);
 
   return router;
 };
