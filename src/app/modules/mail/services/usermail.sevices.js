@@ -1,7 +1,7 @@
 const fs = require("fs");
 const ejs = require("ejs");
 const {
-  sendMail,
+  sendSingleMail,
   saveTransaction,
   parseTemplate,
 } = require("../../../../_helpers/zeptomail/sendSingleMail");
@@ -21,14 +21,15 @@ exports.sendWelcomeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Welcome Onboard";
-    const { error, data } = await sendMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending user welcome mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
+    // if (error) {
+    //   return {
+    //     error: true,
+    //     message: "Error sending user welcome mail",
+    //     data: null,
+    //   };
+    // } else {
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_WELCOME_MAIL,
         bodyData
@@ -38,7 +39,7 @@ exports.sendWelcomeMail = async (bodyData) => {
         message: "Welcome mail sent successfully",
         data: null,
       };
-    }
+    // }
   } catch (err) {
     console.log(err);
     return {
@@ -65,15 +66,8 @@ exports.sendRequestAccountVerificationMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Verify Account";
-    const { error, data } = await sendMail(bodyData);
-    if (error) {
-      console.log(error);
-      return {
-        error: true,
-        message: "Error Sending Verify Account mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_ACCOUNT_VERIFICATION_SUCCESSFUL_MAIL,
         bodyData
@@ -83,7 +77,7 @@ exports.sendRequestAccountVerificationMail = async (bodyData) => {
         message: "Verification Mail Sent Successfully",
         data: null,
       };
-    }
+    
   } catch (err) {
     console.log(err);
     return {
@@ -109,14 +103,9 @@ exports.sendAccountVerificationSuccessfulMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Account Verified";
-    const { error, data } = await sendMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error Sending Account Verification Success mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
+
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_REQUEST_ACCOUNT_VERIFICATION_MAIL,
         bodyData
@@ -126,7 +115,7 @@ exports.sendAccountVerificationSuccessfulMail = async (bodyData) => {
         message: "Verification Successful Mail Sent Successfully",
         data: null,
       };
-    }
+    
   } catch (err) {
     console.log(err);
     return {
@@ -139,6 +128,8 @@ exports.sendAccountVerificationSuccessfulMail = async (bodyData) => {
 
 exports.sendRequestPasswordResetMail = async (bodyData) => {
   try {
+    console.log("EMAIL : ========================= ", bodyData.email);
+    // console.log("BODY : ========================= ", bodyData);
     const template = fs.readFileSync(
       process.cwd() + filePaths.RequestPasswordReset,
       {
@@ -153,14 +144,15 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Password Reset";
-    const { error, data } = await sendMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error Sending Request Reset mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
+    // if (error) {
+    //   return {
+    //     error: true,
+    //     message: "Error Sending Request Reset mail",
+    //     data: null,
+    //   };
+    // } else {
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_REQUEST_PASSWORD_RESET_MAIL,
         bodyData
@@ -169,7 +161,7 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
         error: false,
         message: "Request Password Reset mail sent Successfully",
         data: null,
-      };
+    //   };
     }
   } catch (err) {
     console.log(err);
@@ -196,7 +188,7 @@ exports.passwordResetSucessfulMail = async (bodyData) => {
       const html = ejs.render(template, Data);
       bodyData.html = html;
       bodyData.subject = "Password Reset Successful";
-      const { error, data } = await sendMail(bodyData);
+      const { error, data } = await sendSingleMail(bodyData);
       if (error) {
         return {
           error: true,
@@ -242,7 +234,7 @@ exports.sendMaintenanceNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Maintenance Notice";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -286,7 +278,7 @@ exports.sendMaintenanceCompleteMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Maintenance Completed";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -329,7 +321,7 @@ exports.sendTerminationNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Termination Notice";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -372,7 +364,7 @@ exports.sendTerminationApprovedMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Account Termination Approved";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -415,7 +407,7 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Been A While!!";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -458,7 +450,7 @@ exports.sendUserDownTimeNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "So Sorry There's Been A Glitch.. DownTime!!";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -498,7 +490,7 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Bio Updayted!";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -540,7 +532,7 @@ exports.sendUserUpdateAppMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Update Your ResearchBuddy App!";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -586,7 +578,7 @@ exports.sendSubscriptionSuccesfullMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Subscription Successful";
-    const { error, data } = await sendMail(bodyData);
+    const { error, data } = await sendSingleMail(bodyData);
     if (error) {
       return {
         error: true,
@@ -629,7 +621,7 @@ exports.sendSubscriptionFailedMail = async (bodyData) => {
       const html = ejs.render(template, Data);
       bodyData.html = html;
       bodyData.subject = "Subscription Failed";
-      const { error, data } = await sendMail(bodyData);
+      const { error, data } = await sendSingleMail(bodyData);
       if (error) {
         return {
           error: true,
