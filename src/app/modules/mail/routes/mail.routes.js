@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { authorizeUser } = require("../../../middlewares/authorizeUser");
 const validateRequest = require("../../../middlewares/vallidateRequest");
-const userMailController = require("../../mail/services/usermail.sevices");
+const userMailController = require("../../mail/controller/mail.controllers");
 const {
   mailSchema,
   requestPasswordResetSchema,
@@ -15,105 +15,105 @@ const router = Router();
 
 router.post(
   "/welcome-mail",
-  authorizeUser(["user", "org"]),
+//   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendWelcomeMail
+  userMailController.welcomeMailController
 );
 
 router.post(
   "/request-account-verification",
   authorizeUser(["user", "org"]),
   validateRequest(requestAccountVerificationSchema, "body"),
-  userMailController.sendRequestAccountVerificationMail
+  userMailController.requestAccountVerificationController
 );
 
 router.post(
   "/account-verification-successful",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendAccountVerificationSuccessfulMail
+  userMailController.verificationSuccessfulController
 );
 
 router.post(
   "/request-password-reset",
   validateRequest(requestPasswordResetSchema, "body"),
-  userMailController.sendRequestPasswordResetMail
+  userMailController.requestPasswordResetController
 );
 
 router.post(
   "/password-reset-successful",
   validateRequest(mailSchema, "body"),
-  userMailController.passwordResetSucessfulMail
+  userMailController.passwordResetSuccessfulController
 );
 
 router.post(
   "/maintenance-notice",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendMaintenanceNoticeMail
+  userMailController.maintenanceNoticeController
 );
 
 router.post(
   "/maintenance-complete",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendMaintenanceCompleteMail
+  userMailController.MaintenanceCompleteController
 );
 
 router.post(
   "/account-termination",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendTerminationNoticeMail
+  userMailController.terminationNoticeController
 );
 
 router.post(
   "/account-termination-approved",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendTerminationApprovedMail
+  userMailController.terminationApprovedController
 );
 
 router.post(
   "/long-time-notice",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendUserLongTimeNoticeMail
+  userMailController.userLongTimeNoticeController
 );
 
 router.post(
   "/down-time-notice",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendUserDownTimeNoticeMail
+  userMailController.userDownTimeNoticeController
 );
 
 router.post(
   "/bio-update",
   authorizeUser(["user", "org"]),
   validateRequest(mailSchema, "body"),
-  userMailController.sendUserBioUpdateMail
+  userMailController.userBioUpdatedController
 );
 
 router.post(
   "/update-app",
   authorizeUser(["user", "org"]),
   validateRequest(appUpdateSchema, "body"),
-  userMailController.sendUserUpdateAppMail
+  userMailController.userUpdateAppController
 );
 
 router.post(
-  "/subscription-successfull",
+  "/subscription-successful",
   authorizeUser(["user", "org"]),
   validateRequest(topUpSchema, "body"),
-  userMailController.sendSubscriptionSuccesfullMail
+  userMailController.subscriptionSuccessfullController
 );
 
 router.post(
   "/subscription-failed",
   authorizeUser(["user", "org"]),
   validateRequest(topUpSchema, "body"),
-  userMailController.sendSubscriptionFailedMail
+  userMailController.subscriptionFailedController
 );
 
 module.exports = router;

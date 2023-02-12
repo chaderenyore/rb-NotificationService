@@ -1,23 +1,26 @@
 const fs = require("fs");
 const ejs = require("ejs");
-var { SendMailClient } = require("zeptomail");
+const { SendMailClient } = require("zeptomail");
 const KEYS = require("../../_config/keys");
 const Action = require("../../app/modules/models/actions");
 const Notification = require("../../app/modules/models/notifications");
 const NotificationMessage = require("../../app/modules/models/notification_messages");
 const NotificationOutLogging = require("../../app/modules/models/notification_out_logging");
-const ZEPTO_EMAIL = KEYS.ZEPTO_MAIL_URI;
+const ZEPTO_URL = KEYS.ZEPTO_MAIL_URI;
 const ZEPTO_MAIL_TOKEN = KEYS.ZEPTO_MAIL_TOKEN
-let client = new SendMailClient({ZEPTO_EMAIL, ZEPTO_MAIL_TOKEN});
+console.log("TOKEN +====================", ZEPTO_MAIL_TOKEN);
+console.log("ZEPTO EMAIL +====================", ZEPTO_URL);
 
-exports.sendMail = async (data) => {
+let client = new SendMailClient({url:ZEPTO_URL, token:ZEPTO_MAIL_TOKEN});
+
+exports.sendSingleMail = async (data) => {
   try {
     client.sendMail({
       "bounce_address": KEYS.BOUNCE_ADDRESS,
       "from": 
       {
           "address": `noreply@${KEYS.VERIFIED_DOMAIN}`,
-          "name": "noreply"
+          "name": "ResearchBuddy"
       },
       "to": 
       [
@@ -34,21 +37,22 @@ exports.sendMail = async (data) => {
       "track_clicks": true,
       "track_opens": true,
   }).then((resp) => {
-    return {
-      error: true,
-      data: sentMail,
-    };
-  }).catch((error) => {
+    console.log("success");
     return {
       error: false,
-      data: sentMail,
-    };
-  });
+      data:resp
+    }
+  }).catch((error) => {
+    console.log("Zepto mail error =========================", error);
+    console.log("RESPONSE================ ", error.error);
+    console.log("RESPONSE================ ", error.error.details);
+});
   } catch (error) {
-    // console.log(error.response.body);
+    console.error(error);
     return {
       error: true,
       message: "Error Sending mail",
+      data: error
     };
   }
 };

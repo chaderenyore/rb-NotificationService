@@ -107,6 +107,7 @@ exports.requestPasswordResetController = async (req, res, next) => {
 
 exports.passwordResetSuccessfulController = async (req, res, next) => {
     try {
+        console.log("REQUEST =============== ", req.body)
       const { data, message, error } =
         await UserMailService.passwordResetSucessfulMail(req.body);
   

@@ -50,19 +50,6 @@ exports.inviteSchema = Joi.object().keys({
   link: Joi.string().required()
 });
 
-exports.adsApprovalSchema = Joi.object().keys({
-  first_name: Joi.string().required().label("First name"),
-  email: Joi.string().email().required(),
-  link: Joi.string().required()
-});
-
-exports.adsNotApprovedSchema = Joi.object().keys({
-  first_name: Joi.string().required().label("First name"),
-  email: Joi.string().email().required(),
-  ads_title: Joi.string().required(),
-  ads_id: Joi.string().required()
-});
-
 exports.appUpdateSchema = Joi.object().keys({
   first_name: Joi.string().required().label("First name"),
   email: Joi.string().email().required(),
