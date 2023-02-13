@@ -23,13 +23,6 @@ exports.sendWelcomeMail = async (bodyData) => {
     bodyData.subject = "Welcome Onboard";
     const mailResponse = await sendSingleMail(bodyData);
     console.log("ZEPTO MAIL RESPONSE", mailResponse)
-    // if (error) {
-    //   return {
-    //     error: true,
-    //     message: "Error sending user welcome mail",
-    //     data: null,
-    //   };
-    // } else {
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_WELCOME_MAIL,
         bodyData
@@ -146,13 +139,6 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
     bodyData.subject = "Password Reset";
     const mailResponse = await sendSingleMail(bodyData);
     console.log("ZEPTO MAIL RESPONSE", mailResponse)
-    // if (error) {
-    //   return {
-    //     error: true,
-    //     message: "Error Sending Request Reset mail",
-    //     data: null,
-    //   };
-    // } else {
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_REQUEST_PASSWORD_RESET_MAIL,
         bodyData
@@ -161,7 +147,6 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
         error: false,
         message: "Request Password Reset mail sent Successfully",
         data: null,
-    //   };
     }
   } catch (err) {
     console.log(err);
@@ -188,14 +173,8 @@ exports.passwordResetSucessfulMail = async (bodyData) => {
       const html = ejs.render(template, Data);
       bodyData.html = html;
       bodyData.subject = "Password Reset Successful";
-      const { error, data } = await sendSingleMail(bodyData);
-      if (error) {
-        return {
-          error: true,
-          message: "Error Sending Password Reset Successful mail",
-          data: null,
-        };
-      } else {
+      const mailResponse = await sendSingleMail(bodyData);
+      console.log("ZEPTO MAIL RESPONSE", mailResponse)
         const savedTransaction = await saveTransaction(
           ACTIONS.SEND_USER_PASSWORD_RESET_SUCCESSFUL_MAIL,
           bodyData
@@ -205,7 +184,7 @@ exports.passwordResetSucessfulMail = async (bodyData) => {
           message: "Password Reset Successfully mail sent Successfully",
           data: null,
         };
-      }
+      
     } catch (err) {
       console.log(err);
       return {
@@ -234,14 +213,8 @@ exports.sendMaintenanceNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Maintenance Notice";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending maintenance mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_MAINTENANCE_NOTICE_MAIL,
         bodyData
@@ -251,7 +224,6 @@ exports.sendMaintenanceNoticeMail = async (bodyData) => {
         message: "Maintenace Notice sent successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -278,14 +250,8 @@ exports.sendMaintenanceCompleteMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Maintenance Completed";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending maintenance complete mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_MAINTENANCE_COMPLETE_MAIL,
         bodyData
@@ -295,7 +261,6 @@ exports.sendMaintenanceCompleteMail = async (bodyData) => {
         message: "Maintenace Completed mail sent successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -321,14 +286,8 @@ exports.sendTerminationNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Termination Notice";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending Termination Notice",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_TERMINATION_NOTICE_MAIL,
         bodyData
@@ -338,7 +297,6 @@ exports.sendTerminationNoticeMail = async (bodyData) => {
         message: "Termination Notice sent successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -364,14 +322,8 @@ exports.sendTerminationApprovedMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Account Termination Approved";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending Termination Approval Notice",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_TERMINATION_APPROVED_MAIL,
         bodyData
@@ -381,7 +333,6 @@ exports.sendTerminationApprovedMail = async (bodyData) => {
         message: "Termination Approved Notice sent successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -407,14 +358,8 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Been A While!!";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error Sending LongTime Notice",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_LONGTIME_NOTICE_MAIL,
         bodyData
@@ -424,7 +369,6 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
         message: "Long Time Notice Sent Successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -450,14 +394,8 @@ exports.sendUserDownTimeNoticeMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "So Sorry There's Been A Glitch.. DownTime!!";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending DownTime Notice",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_DOWNTIME_NOTICE_MAIL,
         bodyData
@@ -467,7 +405,6 @@ exports.sendUserDownTimeNoticeMail = async (bodyData) => {
         message: "DownTime Notice Sent Successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -490,14 +427,8 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Bio Updayted!";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending Bio Updated mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_BIO_UPDATE_MAIL,
         bodyData
@@ -507,7 +438,7 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
         message: "Bio Updated Mail Sent Successfully",
         data: null,
       };
-    }
+    
   } catch (err) {
     console.log(err);
     return {
@@ -532,14 +463,8 @@ exports.sendUserUpdateAppMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Update Your ResearchBuddy App!";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error Sending App Update Mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
         ACTIONS.SEND_UPDATE_APP_MAIL,
         bodyData
@@ -549,7 +474,6 @@ exports.sendUserUpdateAppMail = async (bodyData) => {
         message: "Mail Sent Successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -578,21 +502,14 @@ exports.sendSubscriptionSuccesfullMail = async (bodyData) => {
     const html = ejs.render(template, Data);
     bodyData.html = html;
     bodyData.subject = "Subscription Successful";
-    const { error, data } = await sendSingleMail(bodyData);
-    if (error) {
-      return {
-        error: true,
-        message: "Error sending topup mail",
-        data: null,
-      };
-    } else {
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log("ZEPTO MAIL RESPONSE", mailResponse)
       await saveTransaction(ACTIONS.SEND_SUBSCRIPTION_SUCCESS_MAIL, bodyData);
       return {
         error: false,
         message: "Mail Sent Successfully",
         data: null,
       };
-    }
   } catch (err) {
     console.log(err);
     return {
@@ -621,21 +538,14 @@ exports.sendSubscriptionFailedMail = async (bodyData) => {
       const html = ejs.render(template, Data);
       bodyData.html = html;
       bodyData.subject = "Subscription Failed";
-      const { error, data } = await sendSingleMail(bodyData);
-      if (error) {
-        return {
-          error: true,
-          message: "Error Sending Subscription Failed Mail",
-          data: null,
-        };
-      } else {
+      const mailResponse = await sendSingleMail(bodyData);
+      console.log("ZEPTO MAIL RESPONSE", mailResponse)
         await saveTransaction(ACTIONS.SEND_SUBSCRIPTION_SUCCESS_MAIL, bodyData);
         return {
           error: false,
           message: "Mail Sent Successfully",
           data: null,
         };
-      }
     } catch (err) {
       console.log(err);
       return {
