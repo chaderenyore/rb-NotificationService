@@ -22,7 +22,8 @@ exports.requestPasswordResetSchema = Joi.object().keys({
 exports.requestAccountVerificationSchema = Joi.object().keys({
   first_name: Joi.string().required().label("First name"),
   email: Joi.string().email().required(),
-  token: Joi.string().required()
+  token: Joi.string().required(),
+  link: Joi.string().required()
 });
 
 exports.paymentSuccessfullSchema = Joi.object().keys({

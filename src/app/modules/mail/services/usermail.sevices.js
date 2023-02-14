@@ -54,6 +54,7 @@ exports.sendRequestAccountVerificationMail = async (bodyData) => {
     const Data = {
       firstname: bodyData.first_name,
       token: bodyData.token,
+      link:bodyData.link
     };
 
     const html = ejs.render(template, Data);
