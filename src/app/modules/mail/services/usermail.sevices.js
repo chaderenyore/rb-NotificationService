@@ -15,7 +15,8 @@ exports.sendWelcomeMail = async (bodyData) => {
       encoding: "utf-8",
     });
     const Data = {
-      firstname: bodyData.first_name
+      firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);

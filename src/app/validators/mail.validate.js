@@ -12,6 +12,7 @@ exports.mailSchema = Joi.object().keys({
   .format(["YYYY-MM-DD", "DD-MM-YYYY", "DD/MM/YYYY"])
   .utc()
   .optional(),
+  support_email: Joi.string().optional(),
 });
 
 exports.requestPasswordResetSchema = Joi.object().keys({
