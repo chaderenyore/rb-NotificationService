@@ -134,6 +134,7 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
     const Data = {
       firstname: bodyData.first_name,
       token: bodyData.token,
+      support_email: bodyData.support_email,
     };
 
     const html = ejs.render(template, Data);

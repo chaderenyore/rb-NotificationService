@@ -18,7 +18,8 @@ exports.mailSchema = Joi.object().keys({
 exports.requestPasswordResetSchema = Joi.object().keys({
   // first_name: Joi.string().required().label("First name"),
   email: Joi.string().email().required(),
-  token: Joi.string().required()
+  token: Joi.string().required(),
+  support_email: Joi.string().required(),
 });
 exports.requestAccountVerificationSchema = Joi.object().keys({
   first_name: Joi.string().required().label("First name"),
