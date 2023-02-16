@@ -15,4 +15,5 @@ exports.filePaths = {
   BioUpdate: "/src/_assets/templates/user/bioUpdate.ejs",
   SubScritptionSuccessfull: "/src/_assets/templates/user/subscriptionSuccess.ejs",
   SubScritptionFailed: "/src/_assets/templates/user/subscriptionFailed.ejs",
+  UpdateAppMail: "/src/_assets/templates/user/updateAppMail.ejs",
 };

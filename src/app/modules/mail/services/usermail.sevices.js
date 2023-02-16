@@ -458,7 +458,7 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
 
 exports.sendUserUpdateAppMail = async (bodyData) => {
   try {
-    const template = fs.readFileSync(process.cwd() + filePaths.updateAppMail, {
+    const template = fs.readFileSync(process.cwd() + filePaths.UpdateAppMail, {
       encoding: "utf-8",
     });
     console.log("link: ", bodyData.link);
