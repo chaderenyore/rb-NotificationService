@@ -358,6 +358,7 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
     );
     const Data = {
       firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
