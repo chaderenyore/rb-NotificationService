@@ -434,7 +434,7 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
 
     const html = ejs.render(template, Data);
     bodyData.html = html;
-    bodyData.subject = "Bio Updayted!";
+    bodyData.subject = "Bio Needs Attention!";
     const mailResponse = await sendSingleMail(bodyData);
     console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
