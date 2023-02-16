@@ -15,7 +15,8 @@ exports.sendWelcomeMail = async (bodyData) => {
       encoding: "utf-8",
     });
     const Data = {
-      firstname: bodyData.first_name
+      firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
@@ -133,6 +134,7 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
     const Data = {
       firstname: bodyData.first_name,
       token: bodyData.token,
+      support_email: bodyData.support_email,
     };
 
     const html = ejs.render(template, Data);
@@ -169,6 +171,7 @@ exports.passwordResetSucessfulMail = async (bodyData) => {
       );
       const Data = {
         firstname: bodyData.first_name,
+        support_email: bodyData.support_email
       };
   
       const html = ejs.render(template, Data);
@@ -282,6 +285,7 @@ exports.sendTerminationNoticeMail = async (bodyData) => {
     );
     const Data = {
       firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
@@ -354,6 +358,7 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
     );
     const Data = {
       firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
@@ -390,6 +395,7 @@ exports.sendUserDownTimeNoticeMail = async (bodyData) => {
     );
     const Data = {
       firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
@@ -423,11 +429,12 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
     });
     const Data = {
       firstname: bodyData.first_name,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
     bodyData.html = html;
-    bodyData.subject = "Bio Updayted!";
+    bodyData.subject = "Bio Needs Attention!";
     const mailResponse = await sendSingleMail(bodyData);
     console.log("ZEPTO MAIL RESPONSE", mailResponse)
       const savedTransaction = await saveTransaction(
@@ -452,13 +459,14 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
 
 exports.sendUserUpdateAppMail = async (bodyData) => {
   try {
-    const template = fs.readFileSync(process.cwd() + filePaths.updateAppMail, {
+    const template = fs.readFileSync(process.cwd() + filePaths.UpdateAppMail, {
       encoding: "utf-8",
     });
     console.log("link: ", bodyData.link);
     const Data = {
       firstname: bodyData.first_name,
-      link: bodyData.link,
+      ios_link: bodyData.link,
+      android_link: bodyData.link,
     };
 
     const html = ejs.render(template, Data);
