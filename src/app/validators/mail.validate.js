@@ -56,7 +56,8 @@ exports.inviteSchema = Joi.object().keys({
 exports.appUpdateSchema = Joi.object().keys({
   first_name: Joi.string().required().label("First name"),
   email: Joi.string().email().required(),
-  link: Joi.string().required(),
+  ios_link: Joi.string().required(),
+  android_link: Joi.string().required(),
 });
 
 exports.customMailSchema = Joi.object().keys({

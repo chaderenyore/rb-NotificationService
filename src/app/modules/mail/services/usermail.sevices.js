@@ -464,7 +464,8 @@ exports.sendUserUpdateAppMail = async (bodyData) => {
     console.log("link: ", bodyData.link);
     const Data = {
       firstname: bodyData.first_name,
-      link: bodyData.link,
+      ios_link: bodyData.link,
+      android_link: bodyData.link,
     };
 
     const html = ejs.render(template, Data);
