@@ -15,4 +15,10 @@ exports.filePaths = {
   BioUpdate: "/src/_assets/templates/user/bioUpdate.ejs",
   SubScritptionSuccessfull: "/src/_assets/templates/user/subscriptionSuccess.ejs",
   SubScritptionFailed: "/src/_assets/templates/user/subscriptionFailed.ejs",
+
+  // ADMIN MAILS
+
+  AdminWelcomeMail : "/src/_assets/templates/admin/adminWelcomeMail.ejs",
+  AdminAddedMail : "/src/_assets/templates/admin/adminAdded.ejs",
+  NewAdminLoggedIn: "/src/_assets/templates/admin/newAdminLoggedIn.ejs"
 };

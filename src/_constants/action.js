@@ -29,4 +29,8 @@ exports.ACTIONS = {
   SEND_PASSWORD_RESET_SUCCESSFUL_SMS:
     "send user password reset successful sms",
 
+    // Admin Actions
+    ADMIN_WELCOME_MAIL: "send admin welcome mail",
+    ADMIN_ADDED_MAIL: "send new admin added mail",
+    ADMIN_LOGGED_IN_MAIL: "send new admin loged in mail",
 };

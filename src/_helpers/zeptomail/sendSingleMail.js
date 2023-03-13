@@ -8,8 +8,6 @@ const NotificationMessage = require("../../app/modules/models/notification_messa
 const NotificationOutLogging = require("../../app/modules/models/notification_out_logging");
 const ZEPTO_URL = KEYS.ZEPTO_MAIL_URI;
 const ZEPTO_MAIL_TOKEN = KEYS.ZEPTO_MAIL_TOKEN
-console.log("TOKEN +====================", ZEPTO_MAIL_TOKEN);
-console.log("ZEPTO EMAIL +====================", ZEPTO_URL);
 
 let client = new SendMailClient({url:ZEPTO_URL, token:ZEPTO_MAIL_TOKEN});
 
