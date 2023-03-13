@@ -15,7 +15,8 @@ const KEYS = {
   ZEPTO_MAIL_URI: process.env.ZEPTO_MAIL_URI,
   ZEPTO_MAIL_TOKEN: process.env.ZEPTO_MAIL_TOKEN,
   BOUNCE_ADDRESS: process.env.BOUNCE_ADDRESS,
-  VERIFIED_DOMAIN :process.env.VERIFIED_DOMAIN
+  VERIFIED_DOMAIN :process.env.VERIFIED_DOMAIN,
+  ADMIN_SERVICE_URI: process.env.ADMIN_SERVICE_URI,
 };
 
 module.exports = KEYS;

@@ -12,6 +12,7 @@ AccountVerificationMailConsumer.consume("Account Verification Mail");
 
 
 
+mongoose.set('strictQuery', true);
 mongoose
   .connect(KEYS.mongoURI, {
     useNewUrlParser: true,

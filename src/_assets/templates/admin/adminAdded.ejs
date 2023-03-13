@@ -451,7 +451,7 @@ td {
                 <tr>
                   <td>
                     <div class="greetings">
-                      <p class="user-name">Hi 🖐🏾 <%= firstname %> ,
+                      <p class="user-name">Hi 🖐🏾 <%= newAdminUsername %> ,
                       </p>
                       <!-- <p class="mail-subject"> Your account verification code</p> -->
                     </div>
@@ -460,17 +460,21 @@ td {
                 <tr>
                   <td>
                     <div class="mail-body">
-                      <p>You’ve Succesfullly  Verified your Account. 
+                      <p>You’ve Been Added As A/AN <b><%= role %> </b> In The ResearchBuddy Platform. 
                       </p>
-                      <p>If this was not you, your account has been compromised.</p>
-                
-                      <p class="steps">Please follow these steps to secure your account</p>
-                      <p>1. &nbsp; Reset your password <br>
-                      2. &nbsp;Review your security info.<br>
-                      3. &nbsp;how to make your account more secure.
-                      </p>
+                      <p class="steps">Please Use The Following Credentials To Login</p>
+                      <br>
+                      <b>Username : <h2><%= newAdminUsername %></h2> </b>
+                      <br>
+                      <b> Password: <h2><%= password %></h2></b>
+                      <br>
+                      DashBoard Url: <h2><%= adminUrl %></h2>
+                      <br>
+                      Or CLick the link below to log in
+                      <br>
+                      <a href="<%= loginUrl %>">Login To Profile</a>
                       <p>
-                        Thanks for helping us keep your account secure.
+                        Happy Hacking!!!
                       </p>
                     </div>
                   </td>
