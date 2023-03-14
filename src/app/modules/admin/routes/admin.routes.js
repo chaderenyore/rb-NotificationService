@@ -8,6 +8,7 @@ const validateRequest = require ('../../../middlewares/vallidateRequest');
 const AdminAddedValidator = require("../../../validators/admin/adminAddedMail.validator");
 const AdminWelcomeValidator = require("../../../validators/admin/adminWelcomeMail.validator");
 const NewAdminLoggedInValidator = require("../../../validators/admin/newAdminLoggedInMail");
+const UserBlockedValidator = require('../../../validators/admin/userBlockedMail.validator');
 
 // controllers
 const AddNewAdminMailController = require ('../../admin/controllers/addNewAdmin.controller');
@@ -57,5 +58,16 @@ router.post (
   validateRequest (NewAdminLoggedInValidator.newAdminLoggedInSchema, 'body'),
   NewAdminLoggedInMailController.newAdminLoggedInMailController
 );
+
+router.post(
+  'user-blocked',
+  authorizeAdmin([
+    'super',
+    'admin',
+    'moderator'
+  ]),
+  validateRequest(UserBlockedValidator.userBlockedSchema, 'body'),
+
+)
 
 module.exports = router;
