@@ -61,7 +61,7 @@ router.post (
 );
 
 router.post(
-  'user-blocked',
+  '/user-blocked',
   authorizeAdmin([
     'super',
     'admin',
