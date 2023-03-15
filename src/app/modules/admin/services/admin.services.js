@@ -137,6 +137,7 @@ exports.userBlockedMail = async (bodyData) => {
       username: bodyData.username,
       reason: bodyData.reason,
       unblock_steps: bodyData.unblock_steps,
+      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);

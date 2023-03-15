@@ -18,4 +18,5 @@ exports.userBlockedSchema = Joi.object().keys({
     .required(),
   reason: Joi.string().required(),
   unblock_steps: Joi.array().required(),
+  support_email: Joi.string().email().required(),
 });
