@@ -22,5 +22,5 @@ exports.filePaths = {
   AdminAddedMail : "/src/_assets/templates/admin/adminAdded.ejs",
   NewAdminLoggedIn: "/src/_assets/templates/admin/newAdminLoggedIn.ejs",
   UpdateAppMail: "/src/_assets/templates/user/updateAppMail.ejs",
-  BlockUserMail: "/src/_assets/templates/user/blockedUserMail.ejs"
+  UserBlockedMail: "/src/_assets/templates/user/blockedUserMail.ejs"
 };

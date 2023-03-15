@@ -127,7 +127,7 @@ exports.adminWelcomeMail = async (bodyData) => {
 exports.userBlockedMail = async (bodyData) => {
   try {
     const template = fs.readFileSync(
-      process.cwd() + filePaths.AdminWelcomeMail,
+      process.cwd() + filePaths.UserBlockedMail,
       {
         encoding: 'utf-8',
       }
