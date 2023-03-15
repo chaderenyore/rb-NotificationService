@@ -52,10 +52,6 @@ router.post (
 
 router.post (
   '/admin-loggedin',
-  authorizeAdmin ([
-    'super',
-    'admin'
-  ]),
   validateRequest (NewAdminLoggedInValidator.newAdminLoggedInSchema, 'body'),
   NewAdminLoggedInMailController.newAdminLoggedInMailController
 );
