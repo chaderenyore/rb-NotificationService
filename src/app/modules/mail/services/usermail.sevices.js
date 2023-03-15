@@ -15,8 +15,7 @@ exports.sendWelcomeMail = async (bodyData) => {
       encoding: "utf-8",
     });
     const Data = {
-      firstname: bodyData.first_name,
-      support_email: bodyData.support_email
+      firstname: bodyData.first_name
     };
 
     const html = ejs.render(template, Data);
@@ -134,7 +133,6 @@ exports.sendRequestPasswordResetMail = async (bodyData) => {
     const Data = {
       firstname: bodyData.first_name,
       token: bodyData.token,
-      support_email: bodyData.support_email,
     };
 
     const html = ejs.render(template, Data);
@@ -171,7 +169,6 @@ exports.passwordResetSucessfulMail = async (bodyData) => {
       );
       const Data = {
         firstname: bodyData.first_name,
-        support_email: bodyData.support_email
       };
   
       const html = ejs.render(template, Data);
@@ -284,8 +281,7 @@ exports.sendTerminationNoticeMail = async (bodyData) => {
       }
     );
     const Data = {
-      firstname: bodyData.first_name,
-      support_email: bodyData.support_email
+      firstname: bodyData.first_name
     };
 
     const html = ejs.render(template, Data);
@@ -358,7 +354,6 @@ exports.sendUserLongTimeNoticeMail = async (bodyData) => {
     );
     const Data = {
       firstname: bodyData.first_name,
-      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
@@ -394,8 +389,7 @@ exports.sendUserDownTimeNoticeMail = async (bodyData) => {
       }
     );
     const Data = {
-      firstname: bodyData.first_name,
-      support_email: bodyData.support_email
+      firstname: bodyData.first_name
     };
 
     const html = ejs.render(template, Data);
@@ -429,7 +423,6 @@ exports.sendUserBioUpdateMail = async (bodyData) => {
     });
     const Data = {
       firstname: bodyData.first_name,
-      support_email: bodyData.support_email
     };
 
     const html = ejs.render(template, Data);
