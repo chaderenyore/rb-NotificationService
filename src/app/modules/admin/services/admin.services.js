@@ -122,4 +122,43 @@ exports.adminWelcomeMail = async (bodyData) => {
         data: err,
       };
     }
-  };
+};
+
+exports.userBlockedMail = async (bodyData) => {
+  try {
+    const template = fs.readFileSync(
+      process.cwd() + filePaths.AdminWelcomeMail,
+      {
+        encoding: 'utf-8',
+      }
+    );
+    const Data = {
+      email: bodyData.email,
+      username: bodyData.username,
+      reason: bodyData.reason,
+      unblock_steps: bodyData.unblock_steps,
+    };
+
+    const html = ejs.render(template, Data);
+    bodyData.html = html;
+    bodyData.subject = "You've Been blocked";
+    const mailResponse = await sendSingleMail(bodyData);
+    console.log('ZEPTO MAIL RESPONSE', mailResponse);
+    const savedTransaction = await saveTransaction(
+      ACTIONS.ADMIN_WELCOME_MAIL,
+      bodyData
+    );
+    return {
+      error: false,
+      message: 'User Blocked Mail Sent Successfully',
+      data: null,
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      error: true,
+      message: 'Error User Blocked Mail',
+      data: err,
+    };
+  }
+};

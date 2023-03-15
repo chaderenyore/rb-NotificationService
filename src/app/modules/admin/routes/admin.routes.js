@@ -14,6 +14,7 @@ const UserBlockedValidator = require('../../../validators/admin/userBlockedMail.
 const AddNewAdminMailController = require ('../../admin/controllers/addNewAdmin.controller');
 const NewAdminLoggedInMailController = require ('../../admin/controllers/newAdminLoggedIn.controller');
 const AdminWelcomeMailController = require ('../../admin/controllers/adminWelcome.controller');
+const UserBlockedController = require('../../admin/controllers/userBlocked.controller')
 
 const router = Router ();
 
@@ -67,7 +68,7 @@ router.post(
     'moderator'
   ]),
   validateRequest(UserBlockedValidator.userBlockedSchema, 'body'),
-
+  UserBlockedController.userBlockedMailController
 )
 
 module.exports = router;
