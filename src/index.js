@@ -4,7 +4,6 @@ const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
 // const enforce = require("express-sslify");
-
 const routes = require("./app/routes.entry");
 const KEYS = require("./_config/keys");
 const createError = require("./_helpers/createError");
