@@ -40,7 +40,7 @@ jobs:
         node-version: ['12.x']
         appname: ['researchbuddy']
         application-deploy-name: ['researchbuddy-dev']
-        deploy-group: ['NotificationService']
+        deploy-group: ['NotificationsService']
         s3-bucket: ['researchbudydev']
         s3-filename: ['researchbudy-devdeployment-${{ github.sha }}']
 
