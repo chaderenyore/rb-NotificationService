@@ -22,7 +22,6 @@ router.post(
 
 router.post(
   "/request-account-verification",
-  authorizeUser(["user", "org"]),
   validateRequest(requestAccountVerificationSchema, "body"),
   userMailController.requestAccountVerificationController
 );
