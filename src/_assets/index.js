@@ -3,6 +3,7 @@ exports.filePaths = {
   WelcomeMail: "/src/_assets/templates/user/welcome_mail.ejs",
   RequestPasswordReset: "/src/_assets/templates/user/requestResetPassword.ejs",
   RequestAccountVerification: "/src/_assets/templates/user/requestAccountVerification.ejs",
+  AccountVerificationSuccessful: "/src/_assets/templates/user/verifyAccountSuccessful.ejs",
   TerminationNotice: "/src/_assets/templates/user/terminationNotice.ejs",
   TerminationApproved: "/src/_assets/templates/user/terninationApproved.ejs",
   LongTimeNotice: "/src/_assets/templates/user/longTimeNotice.ejs",
